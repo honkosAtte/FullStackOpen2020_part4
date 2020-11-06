@@ -71,45 +71,6 @@ test('0 is added for propery like if no value is provided', async () => {
   expect(response.body[0].likes).toBe(0)
 })
 
-// test('return 400 Bad Request if title or url are not set', async () => {
-//   let blogObject = new Blog({
-//     author: 'Dr Moodle',
-//   })
-//   await blogObject.save()
-//   .expect(400)
-// })
-
-// test('the fetch fails with an error', async () => {
-//   let blogObject = new Blog({
-//     author: 'Dr Moodle',
-//   })
-//   await expect(await blogObject.save()).rejects.toThrow('error');
-// });
-
-// test('400', async () => {
-//   let blogObject = new Blog({
-//     author: 'Dr Moodle',
-//   })
-//   const response = await blogObject.save()
-//   expect('ValidationError: Blog validation failed: url: Path `url` is required., title: Path `title` is required.').toBe('ValidationError: Blog validation failed: url: Path `url` is required., title: Path `title` is required.')
-// })
-
-// test('return 400 Bad Request if title or url are not set', async () => {
-//   let blogObject = new Blog({
-//     author: 'Dr Moodle',
-//   })
-
-//   expect.assertions(0);
-//   try {
-//     await blogObject.save()
-//   } catch (e) {
-//     console.log('400 error ', e)
-//     // expect(e).toMatch('error')
-//     expect(400)
-
-//   }
-// })
-
 test('return 400 Bad Request if title or url are not set', async () => {
   let blogObject = new Blog({
     // title: 'How I stopped worrying',
