@@ -77,8 +77,10 @@ test('return 400 Bad Request if title or url are not set', async () => {
     author: 'Dr StrangeLove',
     // url: 'https://www.drStrangeLove.com',
   })
-  await expect(blogObject.save()).rejects.toThrow("Blog validation failed: url: Path `url` is required., title: Path `title` is required.")
-
+ await api
+ .post('/api/blogs')
+ .send(blogObject)
+ .expect(400)
 });
 
 afterAll(() => {
