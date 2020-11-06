@@ -81,7 +81,8 @@ test('return 400 Bad Request if title or url are not set', async () => {
  .post('/api/blogs')
  .send(blogObject)
  .expect(400)
-});
+})
+
 
 afterAll(() => {
   mongoose.connection.close()
