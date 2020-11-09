@@ -1,4 +1,4 @@
-GET http://localhost:3003/api/blogs/
+//GET http://localhost:3003/api/blogs/
 
 
 # POST http://localhost:3003/api/blogs
@@ -8,5 +8,40 @@ GET http://localhost:3003/api/blogs/
 #    "title": "How I stopped worrying",
 #   "author": "Sr StrangeLove",
 #   "url": "https://www.drStrangeLove.com",
-#   "likes": 1
+#   "likes": 5
 # }
+
+
+
+
+# PUT http://localhost:3003/api/blogs/5fa531efe59b206890d1a4b4
+# Content-Type: application/json
+
+# {
+#   "likes": 1115
+# }
+
+
+
+# DELETE http://localhost:3003/api/blogs/5fa531efe59b206890d1a4b3
+# Content-Type: application/json
+
+
+# POST http://localhost:3003/api/login 
+# Content-Type: application/json
+
+# {
+# "username": "atte", 
+# "password": "patte"
+# }
+
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+"username": "ahh",
+"name": "name"
+"password": "aaa"
+}
+
+GET http://localhost:3003/api/users/
