@@ -3,12 +3,13 @@
 
 # POST http://localhost:3003/api/blogs
 # Content-Type: application/json
+# Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNzYWNzYSIsImlkIjoiNWZhNmRkMTIxODk5OTE3OWE0MzM2YWIxIiwiaWF0IjoxNjA0OTUxOTk3fQ.WxE-ZS3HILUXJ-fgIcyL9Ig_DBDhd8xXlwSPHpdTie0
 
 # {
-#    "title": "How I stopped worrying",
-#   "author": "Sr StrangeLove",
-#   "url": "https://www.drStrangeLove.com",
-#   "likes": 5
+#   "title": "Uusi posti ",
+#   "author": "Sr Senipr",
+#   "url": "https://www.srProgress.com",
+#   "likes": 115
 # }
 
 
@@ -31,17 +32,16 @@
 # Content-Type: application/json
 
 # {
-# "username": "atte", 
+# "username": "atte",
 # "password": "patte"
 # }
 
-POST http://localhost:3003/api/users
-Content-Type: application/json
+# POST http://localhost:3003/api/users
+# Content-Type: application/json
 
-{
-"username": "ahh",
-"name": "name"
-"password": "aaa"
-}
-
-GET http://localhost:3003/api/users/
+# {
+# "username": "atte",
+# "name": "atte",
+# "password": "patte"
+# }
+//GET http://localhost:3003/api/users/
