@@ -3,7 +3,7 @@ const supertest = require('supertest')
 const app = require('../app')
 
 const api = supertest(app)
-
+const User = require('../models/user')
 const Blog = require('../models/blog')
 const initialBlogs = [
   {
@@ -71,23 +71,49 @@ test('0 is added for propery like if no value is provided', async () => {
   expect(response.body[0].likes).toBe(0)
 })
 
-test('return 400 Bad Request if title or url are not set', async () => {
+test('return 401 UnAuthorized if no auth token', async () => {
   let blogObject = new Blog({
-    // title: 'How I stopped worrying',
+    title: 'How I stopped worrying',
     author: 'Dr StrangeLove',
-    // url: 'https://www.drStrangeLove.com',
+    url: 'https://www.drStrangeLove.com',
   })
  await api
  .post('/api/blogs')
  .send(blogObject)
- .expect(400)
+ .expect(401)
+})
+
+test('return 200 ok if blog added with correct auth token', async () => {
+  await Blog.deleteMany({})
+  await User.deleteMany({})
+
+  const user = await api
+  .post('/api/users')
+  .send({
+    "username": "123", 
+    "password": "123"
+    })
+
+const token = await api
+  .post('/api/login')
+  .send({
+    "username": "123", 
+    "password": "123"
+    })
+
+ await api
+ .post('/api/blogs')
+ .set('Content-Type', 'application/json')
+ .set('Authorization', `Bearer ${token.body.token}`)
+ .send({
+  "title": "TEST ",
+  "author": "TEST",
+  "url": "https://www.testi.com",
+})
+ .expect(200)
 })
 
 
 afterAll(() => {
   mongoose.connection.close()
 })
-
-
-
-
