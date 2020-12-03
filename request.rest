@@ -1,9 +1,9 @@
-//GET http://localhost:3003/api/blogs/
+# GET http://localhost:3003/api/blogs/
 
 
 # POST http://localhost:3003/api/blogs
 # Content-Type: application/json
-# Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNzYWNzYSIsImlkIjoiNWZhNmRkMTIxODk5OTE3OWE0MzM2YWIxIiwiaWF0IjoxNjA0OTUxOTk3fQ.WxE-ZS3HILUXJ-fgIcyL9Ig_DBDhd8xXlwSPHpdTie0
+# Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImF0dGUiLCJpZCI6IjVmYjU3NWFiY2Y4OGM0M2JiYzkxNjRiZSIsImlhdCI6MTYwNTcyNzY2OH0.nIkpyGK5pl_uqpZsYfXz56P106hdPJ7eNuNUxetbNw8
 
 # {
 #   "title": "Uusi posti ",
@@ -24,7 +24,10 @@
 
 
 
-# DELETE http://localhost:3003/api/blogs/5fa531efe59b206890d1a4b3
+DELETE http://localhost:3003/api/blogs/5fb57615cf88c43bbc9164bf
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImF0dGUiLCJpZCI6IjVmYjU3NWFiY2Y4OGM0M2JiYzkxNjRiZSIsImlhdCI6MTYwNTcyNzY2OH0.nIkpyGK5pl_uqpZsYfXz56P106hdPJ7eNuNUxetbNw8
+
+
 # Content-Type: application/json
 
 
@@ -45,3 +48,4 @@
 # "password": "patte"
 # }
 //GET http://localhost:3003/api/users/
+

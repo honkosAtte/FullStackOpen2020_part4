@@ -1,12 +1,13 @@
 const blogsRouter = require('express').Router()
 const jwt = require('jsonwebtoken')
 const Blog = require('../models/blog')
+const BlogComment =require('../models/blogComment')
 const User = require('../models/user')
 
 
 blogsRouter.get('/', async (request, response) => {
   const blogs = await Blog
-    .find({}).populate('user', { username: 1, name: 1 })
+    .find({}).populate('user', { username: 1, name: 1 }).populate('comments', { comment: 1, id: 1 })
 
   response.json(blogs.map(blog => blog.toJSON()))
 })
@@ -24,7 +25,7 @@ blogsRouter.post('/', async (request, response) => {
     author: body.author,
     url: body.url,
     likes: body.likes,
-    user: user._id
+    user: user._id,
   })
 
   const savedBlog = await blog.save()
@@ -34,8 +35,32 @@ blogsRouter.post('/', async (request, response) => {
   response.json(savedBlog.toJSON())
 })
 
+blogsRouter.post('/:id/comments', async (request, response) => {
+  const body = request.body
+  const blog = await Blog.findById(request.body.id)
+  const comment = new BlogComment({
+  comment: body.comment
+  })
+  const savedBlogComment = await comment.save()
+  blog.comments = blog.comments.concat(savedBlogComment._id)
+  await blog.save()
+  response.json(savedBlogComment.toJSON())
+})
+
+blogsRouter.get('/:id/comments', async (request, response) => {
+  const body = request.body
+  const blog = await Blog.findById(request.body.id)
+  const comment = new BlogComment({
+  comment: body.comment
+  })
+  const savedBlogComment = await comment.save()
+  blog.comments = blog.comments.concat(savedBlogComment._id)
+  await blog.save()
+  response.json(savedBlogComment.toJSON())
+})
+
 blogsRouter.get('/:id', async (request, response) => {
-  const blog = await Blog.findById(request.params.id)
+  const blog = await Blog.findById(request.params.id).populate('comments', { comment: 1, id: 1 })
   if (blog) {
     response.json(blog.toJSON())
   } else {
@@ -47,8 +72,6 @@ blogsRouter.put('/:id', (request, response, next) => {
   const body = request.body
 
   const blog = {
-    content: body.content,
-    important: body.important,
   }
 
   Blog.findByIdAndUpdate(request.params.id, blog, { new: true })
